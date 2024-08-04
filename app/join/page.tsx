@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import Header from '@/components/Header'
+import { NavbarDemo } from "@/components/Navbar";
 import { useRouter } from 'next/navigation'
 import DotPattern from '@/components/magicui/dot-pattern'
 
@@ -27,7 +27,7 @@ const router = useRouter();
 
     return (
         <div>
-            <Header />
+            <NavbarDemo />
             <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
             <h2 className='text-white text-3xl flex justify-center pt-6'>SignUp to DeFiverrr</h2>
             <div className="flex flex-col items-center justify-center">

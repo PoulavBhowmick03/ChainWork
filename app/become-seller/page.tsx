@@ -1,11 +1,11 @@
-import Header from '@/components/Header'
+import { NavbarDemo } from "@/components/Navbar";
 import DotPattern from '@/components/magicui/dot-pattern'
 import { SellerOnboardingForm } from '@/components/SellerOnboardingForm'
 
 export default function BecomeSellerPage() {
   return (
     <div>
-      <Header />
+      <NavbarDemo />
 
       <div className="container mx-auto  relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
         <div className="z-10 container mx-auto py-8 max-w-md">

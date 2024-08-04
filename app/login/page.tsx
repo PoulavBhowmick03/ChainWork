@@ -1,15 +1,14 @@
 "use client"
-import Header from '@/components/Header'
+import { NavbarDemo } from "@/components/Navbar";
 import { LoginForm } from '@/components/LoginForm'
 import DotPattern from '@/components/magicui/dot-pattern'
 
 export default function LoginPage() {
   return (
     <div>
-      <Header />
+      <NavbarDemo />
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
         <div className="z-10 container mx-auto py-8 max-w-md">
-          <h1 className="text-3xl font-bold mb-6 text-center">Log In</h1>
           <LoginForm />
         </div>
       </div>
