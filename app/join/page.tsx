@@ -16,9 +16,9 @@ const router = useRouter();
 
     const handleSignUp = () => {
         if (selectedRole=="client") {
-           router.push('/become-seller')
+           router.push('/join/become-seller')
         } else if (selectedRole=="user") {
-            router.push('/signup')
+            router.push('/join/signup')
         }
         else {
             alert('Please select a role')
