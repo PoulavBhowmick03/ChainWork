@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
-
+import Home from "@/app/page"
+import Link from 'next/link';
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
   { ssr: false }
@@ -58,13 +59,22 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
             className="fixed inset-y-0 left-0 z-40 w-64 bg-gray-800 text-white space-y-6 py-7 px-2 md:relative"
           >
             <nav>
+              <Link href="/">
+                <motion.div
+                  className="py-2.5 px-4"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  🏠 Home
+                </motion.div>
+              </Link>
+
               {menuItems.map((item) => (
                 <motion.a
                   key={item.value}
                   href="#"
-                  className={`block py-2.5 px-4 rounded transition duration-200 ${
-                    activeTab === item.value ? "bg-gray-700" : "hover:bg-gray-700"
-                  }`}
+                  className={`block py-2.5 px-4 rounded transition duration-200 ${activeTab === item.value ? "bg-gray-700" : "hover:bg-gray-700"
+                    }`}
                   onClick={() => {
                     setActiveTab(item.value);
                     if (!isDesktop) setIsOpen(false);

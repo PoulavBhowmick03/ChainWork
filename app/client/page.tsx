@@ -17,7 +17,7 @@ const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
-    <div className="flex h-screen bg-gray-900 relative overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-r from-black via-slate-950 to-black relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <AnimatedGridPatternDemo />
       </div>
