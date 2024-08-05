@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const StickyScroll = ({
@@ -32,21 +32,24 @@ export const StickyScroll = ({
   const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
-      const newActiveCard = Math.floor(scrollPercentage * cardLength);
-      setActiveCard(Math.min(newActiveCard, cardLength - 1));
-    };
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+        const newActiveCard = Math.floor(scrollPercentage * cardLength);
+        setActiveCard(Math.min(newActiveCard, cardLength - 1));
+      };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, [cardLength]);
 
   useEffect(() => {
     setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCard]);
 
   return (

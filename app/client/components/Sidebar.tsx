@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 
 const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -32,7 +43,7 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
 
       {/* Sidebar */}
       <AnimatePresence>
-        {(isOpen || window.innerWidth > 768) && (
+        {(isOpen || isDesktop) && (
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
@@ -50,7 +61,7 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
                   }`}
                   onClick={() => {
                     setActiveTab(item.value);
-                    if (window.innerWidth <= 768) setIsOpen(false);
+                    if (!isDesktop) setIsOpen(false);
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -64,7 +75,7 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
       </AnimatePresence>
 
       {/* Overlay for small devices */}
-      {isOpen && window.innerWidth <= 768 && (
+      {isOpen && !isDesktop && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
