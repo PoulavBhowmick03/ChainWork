@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
+import dynamic from 'next/dynamic';
+
+const WalletMultiButtonDynamic = dynamic(
+  async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
+  { ssr: false }
+);
 
 const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,6 +75,13 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
                   {item.icon} {item.name}
                 </motion.a>
               ))}
+              <motion.div
+                className="py-2.5 px-4"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <WalletMultiButtonDynamic />
+              </motion.div>
             </nav>
           </motion.div>
         )}

@@ -66,6 +66,7 @@ function Navbar({ className }: { className?: string }) {
         <MenuItem href="/" isActive={active === "home"}>Home</MenuItem>
         <MenuItem href="/join" isActive={active === "signup"}>Sign Up</MenuItem>
         <MenuItem href="/login" isActive={active === "login"}>Login</MenuItem>
+        <MenuItem href="/client" isActive={active === "client"}>Client</MenuItem>
         <ConnectWalletButton />
       </ul>
     </motion.nav>
