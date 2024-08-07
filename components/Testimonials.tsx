@@ -13,34 +13,65 @@ export function InfiniteMovingCardsDemo() {
     );
   }
   
-const testimonials = [
-  {
-    quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
-  },
-  {
-    quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
-  },
-  {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
-  },
-  {
-    quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
-  },
-  {
-    quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
-  },
-];
+  const testimonials = [
+    {
+      quote:
+        "This platform has completely revolutionized the way I hire freelancers. The decentralized nature ensures transparency and security for both parties. I couldn't be happier with the results!",
+      name: "Alice Johnson",
+      title: "CEO, Tech Innovations",
+    },
+    {
+      quote:
+        "As a freelancer, this platform gives me the freedom and security I need. Payments are always timely and fair, and the system ensures that my work is properly recognized and rewarded.",
+      name: "John Doe",
+      title: "Freelance Developer",
+    },
+    {
+      quote:
+        "The decentralized approach is a game-changer. I love the fact that I can see where my money is going, and I feel much more secure hiring talent from around the world.",
+      name: "Sarah Williams",
+      title: "Project Manager, Creative Solutions",
+    },
+    {
+      quote:
+        "Being able to collaborate with other freelancers on big projects and share the total amount fairly is amazing. This platform makes it so easy to find work and get paid.",
+      name: "Emily Clark",
+      title: "Graphic Designer",
+    },
+    {
+      quote:
+        "Trust and transparency were always issues for me with traditional freelancing platforms. This decentralized platform has solved those problems, making my job as a client much easier.",
+      name: "Michael Brown",
+      title: "Entrepreneur",
+    },
+    {
+      quote:
+        "What I love most about this platform is the decentralized payment system. I no longer have to worry about payment delays or disputes. Everything is handled smoothly and efficiently.",
+      name: "Jessica Lee",
+      title: "Freelance Writer",
+    },
+    {
+      quote:
+        "Hiring freelancers from this platform has been a breeze. The interface is user-friendly, and the smart contract feature ensures that both parties adhere to the agreement.",
+      name: "Robert Davis",
+      title: "Marketing Director",
+    },
+    {
+      quote:
+        "This platform has brought a new level of trust and efficiency to the freelancing industry. As a freelancer, I feel valued and secure knowing that my work is protected by smart contracts.",
+      name: "Laura Martin",
+      title: "Freelance Web Developer",
+    },
+    {
+      quote:
+        "I appreciate the fairness and transparency of this decentralized freelancing platform. It has made finding reliable freelancers so much easier.",
+      name: "David Thompson",
+      title: "Business Owner",
+    },
+    {
+      quote:
+        "The decentralized nature of this platform ensures that my work is valued and paid for promptly. It's a game-changer for freelancers looking for reliable and fair opportunities.",
+      name: "Samantha White",
+      title: "Freelance Content Creator",
+    },
+  ];  

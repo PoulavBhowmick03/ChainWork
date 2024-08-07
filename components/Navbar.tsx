@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { IconWallet } from "@tabler/icons-react";
+import { signOut, useSession } from "next-auth/react";
+import { Button } from "./ui/button";
+import Image from "next/image";
 
 const MenuItem = ({ children, href, isActive }: { children: React.ReactNode; href: string; isActive: boolean }) => {
   return (
@@ -42,6 +45,7 @@ const ConnectWalletButton = () => {
 };
 
 export function NavbarDemo() {
+
   return (
     <div className="relative w-full flex items-center justify-center pb-28">
       <Navbar className="top-2" />
@@ -51,6 +55,7 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState("home");
+  const { data: session, status } = useSession() as { data: { user?: { image: string } } | undefined, status: string };
 
   return (
     <motion.nav
@@ -64,9 +69,31 @@ function Navbar({ className }: { className?: string }) {
     >
       <ul className="flex justify-center items-center px-6 py-3">
         <MenuItem href="/" isActive={active === "home"}>Home</MenuItem>
-        <MenuItem href="/join" isActive={active === "signup"}>Sign Up</MenuItem>
-        <MenuItem href="/login" isActive={active === "login"}>Login</MenuItem>
         <MenuItem href="/client" isActive={active === "client"}>Client</MenuItem>
+
+        {status === "authenticated" ? (
+          <button onClick={() => signOut()}
+            className="inline-flex h-9 items-center justify-center rounded-md text-sm text-white font-medium shadow transition-colors hover:bg-zinc-800 disabled:pointer-events-none disabled:opacity-50"
+          >
+            {session?.user?.image && (
+              <Image
+                src={session.user.image}
+                alt="User profile"
+                width={24}
+                height={24}
+                className="rounded-full mr-2"
+              />
+            )}
+            Logout
+          </button>
+        ) : (
+          <div className="flex justify-center">
+            <MenuItem href="/join" isActive={active === "signup"}>Sign Up</MenuItem>
+            <MenuItem href="/login" isActive={active === "login"}>Login</MenuItem>
+          </div>
+        )}
+
+
       </ul>
     </motion.nav>
   );

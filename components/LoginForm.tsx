@@ -5,8 +5,10 @@ import { Label } from '@/components/ui/label'
 import { useToast } from '@/components/ui/use-toast'
 import { IconBrandGithub, IconBrandGoogle, IconEye, IconEyeOff } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export function LoginForm() {
+  const { data: session, status } = useSession();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -22,7 +24,7 @@ export function LoginForm() {
   }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -67,8 +69,8 @@ export function LoginForm() {
             </button>
           </div>
         </div>
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white py-2 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
         >
           Log In
@@ -84,16 +86,14 @@ export function LoginForm() {
           </div>
         </div>
         <div className="mt-6 grid grid-cols-2 gap-3">
-          <Button
+          <Button onClick={() => signIn('google')}
             className="w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-50 dark:hover:bg-gray-600 transition duration-300 ease-in-out"
-            onClick={() => console.log('Login with Google')}
           >
             <IconBrandGoogle className="h-5 w-5" />
             <span>Google</span>
           </Button>
-          <Button
+          <Button onClick={() => signIn('github')}
             className="w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-50 dark:hover:bg-gray-600 transition duration-300 ease-in-out"
-            onClick={() => console.log('Login with Github')}
           >
             <IconBrandGithub className="h-5 w-5" />
             <span>Github</span>
