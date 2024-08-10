@@ -31,19 +31,6 @@ const MenuItem = ({ children, href, isActive }: { children: React.ReactNode; hre
   );
 };
 
-const ConnectWalletButton = () => {
-  return (
-    <motion.button
-      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center space-x-2"
-      whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(168, 85, 247, 0.5)" }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <IconWallet size={20} />
-      <span>Connect Wallet</span>
-    </motion.button>
-  );
-};
-
 export function NavbarDemo() {
 
   return (
@@ -70,6 +57,7 @@ function Navbar({ className }: { className?: string }) {
       <ul className="flex justify-center items-center px-6 py-3">
         <MenuItem href="/" isActive={active === "home"}>Home</MenuItem>
         <MenuItem href="/client" isActive={active === "client"}>Client</MenuItem>
+        <MenuItem href="/user" isActive={active === "user"}>User</MenuItem>
 
         {status === "authenticated" ? (
           <button onClick={() => signOut()}
