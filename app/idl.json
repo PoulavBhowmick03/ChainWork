@@ -1,0 +1,622 @@
+{
+    "version": "0.1.0",
+    "name": "fiverrr",
+    "instructions": [
+      {
+        "name": "registerUser",
+        "accounts": [
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "registerClient",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "firstName",
+            "type": "string"
+          },
+          {
+            "name": "lastName",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "editUserProfile",
+        "accounts": [
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "newUsername",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newPassword",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newEmail",
+            "type": {
+              "option": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "editClientProfile",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "newFirstName",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newLastName",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newEmail",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newCountry",
+            "type": {
+              "option": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "createGig",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "clientGigs",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "gig",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "name": "expertise",
+            "type": "string"
+          },
+          {
+            "name": "pay",
+            "type": "u64"
+          },
+          {
+            "name": "projectType",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "editGig",
+        "accounts": [
+          {
+            "name": "gig",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "client",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "newTitle",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newDescription",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newPay",
+            "type": {
+              "option": "u64"
+            }
+          },
+          {
+            "name": "newLocation",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newExpertise",
+            "type": {
+              "option": "string"
+            }
+          },
+          {
+            "name": "newProjectType",
+            "type": {
+              "option": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "deleteGig",
+        "accounts": [
+          {
+            "name": "clientGigs",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "gig",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "client",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "createContract",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "user",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "gig",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "contract",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "terms",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "createEscrow",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "gig",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "escrow",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "releasePayment",
+        "accounts": [
+          {
+            "name": "client",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "escrow",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "contract",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      }
+    ],
+    "accounts": [
+      {
+        "name": "User",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "authority",
+              "type": "publicKey"
+            },
+            {
+              "name": "pubkey",
+              "type": "publicKey"
+            },
+            {
+              "name": "username",
+              "type": "string"
+            },
+            {
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "name": "passwordHash",
+              "type": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Client",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "authority",
+              "type": "publicKey"
+            },
+            {
+              "name": "pubkey",
+              "type": "publicKey"
+            },
+            {
+              "name": "firstName",
+              "type": "string"
+            },
+            {
+              "name": "lastName",
+              "type": "string"
+            },
+            {
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "name": "passwordHash",
+              "type": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            },
+            {
+              "name": "country",
+              "type": "string"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Gig",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "client",
+              "type": "publicKey"
+            },
+            {
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            },
+            {
+              "name": "location",
+              "type": "string"
+            },
+            {
+              "name": "expertise",
+              "type": "string"
+            },
+            {
+              "name": "pay",
+              "type": "u64"
+            },
+            {
+              "name": "projectType",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ClientGigs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "client",
+              "type": "publicKey"
+            },
+            {
+              "name": "gigs",
+              "type": {
+                "vec": "publicKey"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Contract",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "client",
+              "type": "publicKey"
+            },
+            {
+              "name": "user",
+              "type": "publicKey"
+            },
+            {
+              "name": "gig",
+              "type": "publicKey"
+            },
+            {
+              "name": "terms",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": {
+                "defined": "ContractStatus"
+              }
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Escrow",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "client",
+              "type": "publicKey"
+            },
+            {
+              "name": "gig",
+              "type": "publicKey"
+            },
+            {
+              "name": "amount",
+              "type": "u64"
+            },
+            {
+              "name": "createdAt",
+              "type": "i64"
+            }
+          ]
+        }
+      }
+    ],
+    "types": [
+      {
+        "name": "ContractStatus",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "Pending"
+            },
+            {
+              "name": "InProgress"
+            },
+            {
+              "name": "Completed"
+            },
+            {
+              "name": "Cancelled"
+            }
+          ]
+        }
+      }
+    ],
+    "errors": [
+      {
+        "code": 6000,
+        "name": "InvalidInput",
+        "msg": "Invalid input provided"
+      },
+      {
+        "code": 6001,
+        "name": "Unauthorized",
+        "msg": "Unauthorized action"
+      },
+      {
+        "code": 6002,
+        "name": "InvalidContractStatus"
+      }
+    ],
+    "metadata": {
+      "address": "7oeoguZB657bivA9uu4DoP9fPws4xwxLHf4nLUS28zCd"
+    }
+  }

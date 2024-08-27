@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
-import Home from "@/app/page"
 import Link from 'next/link';
+import RegisterClientButton from './RegisterClientButton';
+
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
   { ssr: false }
@@ -91,6 +92,20 @@ const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab:
                 whileTap={{ scale: 0.95 }}
               >
                 <WalletMultiButtonDynamic />
+              </motion.div>
+              <motion.div
+                className="py-2.5 px-4"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <RegisterClientButton
+                  onSuccess={(publicKey: string) => {
+                    console.log('Client registered with public key:', publicKey);
+                  }}
+                  onError={(error: any) => {
+                    console.error('Error registering client:', error);
+                  }}
+                />
               </motion.div>
             </nav>
           </motion.div>

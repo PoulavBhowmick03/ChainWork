@@ -7,7 +7,7 @@ export default function HeroSection() {
     <div className="relative bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
       <div className="absolute inset-0">
         <Image
-          src="/hero-background.jpg"
+          src="/public/toodle.png"
           alt="Hero background"
           className="w-full h-full object-cover opacity-20"
           width={20}
